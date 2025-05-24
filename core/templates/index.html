@@ -2,18 +2,68 @@
 
 {% load static %}
 {% block content %}
-    <h1>Личный кабинет</h1>
-    <h2>Врач {{ request.user }}</h2>
-    <div style="width: 50%;">
-        {% for p in patients %}
-        <div style="display: flex; justify-content: space-around;">
-            <div>{{ p.patient_name }}</div>
-            <div>{{ p.last_questionnaire }}</div>
-            <div>{{ p.rating }}</div>
-        </div>
-        {% endfor %}
+<div class="wrapper">
+ <div class="container">
+   <div style="display: flex; justify-content: space-around; align-items:center;">
+     <h2>
+       Врач {{ request.user }}
+     </h2>
+     <a href="{% url 'logout' %}">Выйти</a>
+   </div>
+   <div class="row">
+     <div class="">
+
+       <div class="fresh-table toolbar-color-blue full-color-azure">
+
+       <!-- Изменение фона таблицы: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
+       Изменение фона тулбара страницы: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
+       -->
+
+         <table id="fresh-table" class="table">
+           <thead>
+             <th data-field="id">ID</th>
+             <th data-field="name" data-sortable="true">Имя</th>
+             <th data-field="salary" data-sortable="true">Дата рождения</th>
+             <th data-field="country" data-sortable="true">Последний опрос</th>
+             <th data-field="city">Баллы</th>
+             <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Состояние</th>
+           </thead>
+           <tbody>
+             {% for p in patients %}
+             <tr>
+               <td>{{ p.user_id.id }}</td>
+               <td>{{ p.user_id.family_name }} {{ p.user_id.first_name }}</td>
+               <td>{{ p.user_id.birth_date }}</td>
+               <td>{{ p.question_text|truncatechars:40 }}</td>
+               <td>{{ p.points }}</td>
+               {% if p.points < 10 %}
+               <td style="display: flex; justify-content:center;">
+                 <div style="background:red;border-radius:50%;">
+                   <div style="visibility: hidden">yes</div>
+                 </div>
+               </td>
+               {% elif p.points > 10 and p.points < 35 %}
+               <td style="display: flex; justify-content:center;">
+                 <div style="background:yellow;border-radius:50%;">
+                   <div style="visibility: hidden">yes</div>
+                 </div>
+               </td>
+               {% else %}
+               <td style="display: flex; justify-content:center;">
+                 <div style="background:green;border-radius:50%;">
+                   <div style="visibility: hidden">yes</div>
+                 </div>
+               </td>
+               {% endif %}
+             </tr>
+             {% endfor %}
+           </tbody>
+         </table>
+       </div>
 
 
-    </div>
-    <div><button><a class="nav-link" href="{% url 'logout' %}">Выйти</a></button></div>
+     </div>
+   </div>
+ </div>
+</div>
 {% endblock %}
