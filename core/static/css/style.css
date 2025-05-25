@@ -1,0 +1,58 @@
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: url("med.jpg") 50% 0 no-repeat ;
+    background-size: cover;
+}
+
+.doc_name {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background:radial-gradient(ellipse at center, #2D7CE7 0%, #36AFEC 100%);
+    border-radius: 10px;
+    padding: 15px 0 15px;
+    margin: 10px 0 20px;
+
+    h2 {
+        color: white;
+        margin: 0;
+    }
+
+    a {
+        color: white;
+        font-size: 18px;
+    }
+}
+
+.status_td {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .red {
+        background: red;
+        border-radius: 50%;
+    }
+
+    .yellow {
+        background: yellow;
+        border-radius: 50%;
+    }
+
+    .green {
+        background: green;
+        border-radius: 50%;
+    }
+}
+
+.v-h {
+    visibility: hidden;
+}
+
