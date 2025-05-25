@@ -4,13 +4,14 @@
 {% block content %}
 <div class="wrapper">
  <div class="container">
-   <div style="display: flex; justify-content: space-around; align-items:center;">
-     <h2>
-       Врач {{ request.user }}
-     </h2>
-     <a href="{% url 'logout' %}">Выйти</a>
-   </div>
+
    <div class="row">
+     <div class="doc_name">
+       <h2>
+         Врач {{ request.user }}
+       </h2>
+       <a href="{% url 'logout' %}">Выйти</a>
+    </div>
      <div class="">
 
        <div class="fresh-table toolbar-color-blue full-color-azure">
@@ -26,7 +27,7 @@
              <th data-field="salary" data-sortable="true">Дата рождения</th>
              <th data-field="country" data-sortable="true">Последний опрос</th>
              <th data-field="city">Баллы</th>
-             <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Состояние</th>
+             <th data-field="actions" data-formatter="operateFormatter" style="text-align: center;" data-events="operateEvents">Состояние</th>
            </thead>
            <tbody>
              {% for p in patients %}
@@ -37,21 +38,21 @@
                <td>{{ p.question_text|truncatechars:40 }}</td>
                <td>{{ p.points }}</td>
                {% if p.points < 10 %}
-               <td style="display: flex; justify-content:center;">
-                 <div style="background:red;border-radius:50%;">
-                   <div style="visibility: hidden">yes</div>
+               <td class="status_td">
+                 <div class="red">
+                   <div class="v-h">yes</div>
                  </div>
                </td>
                {% elif p.points > 10 and p.points < 35 %}
-               <td style="display: flex; justify-content:center;">
-                 <div style="background:yellow;border-radius:50%;">
-                   <div style="visibility: hidden">yes</div>
+               <td class="status_td">
+                 <div class="yellow">
+                   <div class="v-h">yes</div>
                  </div>
                </td>
                {% else %}
-               <td style="display: flex; justify-content:center;">
-                 <div style="background:green;border-radius:50%;">
-                   <div style="visibility: hidden">yes</div>
+               <td class="status_td">
+                 <div class="green">
+                   <div class="v-h">yes</div>
                  </div>
                </td>
                {% endif %}
