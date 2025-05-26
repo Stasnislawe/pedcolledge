@@ -1,14 +1,20 @@
 {% extends "main.html" %}
 
-
 {% block content %}
-<h2> Войти в систему </h2>
-<form method="post" action="{% url 'login' %}">
-{% csrf_token %}
-{{ form.as_p }}
+<div class="container">
+    <div class="body-login">
+        <form method="post" action="/doc/login/">
+            {% csrf_token %}
+            <h3>Авторизироваться</h3>
 
-<input type="submit" value="Войти">
-</form>
-<div style="padding-top: 20px;">
+            <label>Имя пользователя</label>
+            {{ form.username }}
+
+            <label>Пароль</label>
+            {{ form.password }}
+
+            <button type="submit">Войти</button>
+        </form>
+    </div>
 </div>
 {% endblock %}
