@@ -18,6 +18,16 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
   </head>
+  {% if not request.user.is_authenticated %}
+  <header>
+    <div class="container">
+      <div class="nav">
+       <a href="{% url 'index' %}">Личный кабинет</a>
+       <a href="{% url 'login' %}">Войти</a>
+    </div>
+    </div>
+  </header>
+  {% endif %}
   <body>
 	{% block content %}
 
