@@ -158,3 +158,29 @@ body {
         cursor: pointer;
     }
 }
+
+.popup {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  z-index: 10;
+}
+
+.popup-content {
+  background: #333;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.btn-popup {
+  background-color: grey;
+  border-radius: 10px;
+}
