@@ -35,7 +35,12 @@
                <td>{{ p.user_id.id }}</td>
                <td>{{ p.user_id.family_name }} {{ p.user_id.first_name }}</td>
                <td>{{ p.user_id.birth_date }}</td>
-               <td>{{ p.question_text|truncatechars:40 }}</td>
+               <td>
+                 <button class="btn-popup" onclick="togglePopup(event)">Последний опрос </button>
+                 <div class="popup">
+                   <div class="popup-content">{{ p.question_text }}</div>
+                 </div>
+               </td>
                <td>{{ p.points }}</td>
                {% if p.points < 10 %}
                <td class="status_td">
